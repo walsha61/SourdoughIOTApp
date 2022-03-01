@@ -39,9 +39,10 @@ class ViewController: UIViewController {
             self.connectToAWSIoT(clientId: clientId)
             
                 print("Connected Whoop")
+            
             }
         
-        registerSubscriptions()
+
         
         print("Registered Whoop")
         
@@ -74,6 +75,7 @@ class ViewController: UIViewController {
                 case .connecting: print("Connecting to AWS IoT")
                 case .connected:
                     print("Connected to AWS IoT")
+                    registerSubscriptions()
                     // Register subscriptions here
                     // Publish a boot message if required
                 case .connectionError: print("AWS IoT connection error")
