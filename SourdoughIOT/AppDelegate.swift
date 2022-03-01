@@ -2,8 +2,7 @@
 //  AppDelegate.swift
 //  SourdoughIOT
 //
-//  Created by Anneliese Walsh on 01/03/2022.
-//  Copyright © 2022 Anneliese Walsh. All rights reserved.
+//  Created by Julie Gallagher on 2/23/22.
 //
 
 import UIKit
@@ -34,4 +33,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-

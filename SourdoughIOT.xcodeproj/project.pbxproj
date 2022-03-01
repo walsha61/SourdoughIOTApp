@@ -13,9 +13,12 @@
 		A2F7388927CE1B480053486E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2F7388727CE1B480053486E /* Main.storyboard */; };
 		A2F7388B27CE1B4C0053486E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A2F7388A27CE1B4C0053486E /* Assets.xcassets */; };
 		A2F7388E27CE1B4C0053486E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2F7388C27CE1B4C0053486E /* LaunchScreen.storyboard */; };
+		FE7393E0C7645FD0A4C0904D /* Pods_SourdoughIOT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E23854D0F7A8770C9CED4E4 /* Pods_SourdoughIOT.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E23854D0F7A8770C9CED4E4 /* Pods_SourdoughIOT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SourdoughIOT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		996F1BE8C20D9335EDBABB75 /* Pods-SourdoughIOT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SourdoughIOT.release.xcconfig"; path = "Target Support Files/Pods-SourdoughIOT/Pods-SourdoughIOT.release.xcconfig"; sourceTree = "<group>"; };
 		A2F7387E27CE1B480053486E /* SourdoughIOT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SourdoughIOT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F7388127CE1B480053486E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2F7388327CE1B480053486E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		A2F7388A27CE1B4C0053486E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A2F7388D27CE1B4C0053486E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A2F7388F27CE1B4C0053486E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A325BDC9B9396272F9168C98 /* Pods-SourdoughIOT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SourdoughIOT.debug.xcconfig"; path = "Target Support Files/Pods-SourdoughIOT/Pods-SourdoughIOT.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE7393E0C7645FD0A4C0904D /* Pods_SourdoughIOT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F545BDAA15DAD3DFBC69E05 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A325BDC9B9396272F9168C98 /* Pods-SourdoughIOT.debug.xcconfig */,
+				996F1BE8C20D9335EDBABB75 /* Pods-SourdoughIOT.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A2F7387527CE1B480053486E = {
 			isa = PBXGroup;
 			children = (
 				A2F7388027CE1B480053486E /* SourdoughIOT */,
 				A2F7387F27CE1B480053486E /* Products */,
+				8F545BDAA15DAD3DFBC69E05 /* Pods */,
+				F5A07DE42A7244E8A0927B92 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +84,14 @@
 			path = SourdoughIOT;
 			sourceTree = "<group>";
 		};
+		F5A07DE42A7244E8A0927B92 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E23854D0F7A8770C9CED4E4 /* Pods_SourdoughIOT.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A2F7389227CE1B4C0053486E /* Build configuration list for PBXNativeTarget "SourdoughIOT" */;
 			buildPhases = (
+				CEF1A1B5420A6BE648F847A4 /* [CP] Check Pods Manifest.lock */,
 				A2F7387A27CE1B480053486E /* Sources */,
 				A2F7387B27CE1B480053486E /* Frameworks */,
 				A2F7387C27CE1B480053486E /* Resources */,
+				B26DD2C6125089C64EE394DC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B26DD2C6125089C64EE394DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SourdoughIOT/Pods-SourdoughIOT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SourdoughIOT/Pods-SourdoughIOT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SourdoughIOT/Pods-SourdoughIOT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CEF1A1B5420A6BE648F847A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SourdoughIOT-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A2F7387A27CE1B480053486E /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		A2F7389327CE1B4C0053486E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A325BDC9B9396272F9168C98 /* Pods-SourdoughIOT.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +370,7 @@
 		};
 		A2F7389427CE1B4C0053486E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 996F1BE8C20D9335EDBABB75 /* Pods-SourdoughIOT.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
