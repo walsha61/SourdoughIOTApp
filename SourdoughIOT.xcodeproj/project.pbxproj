@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -48,7 +48,6 @@
 				A325BDC9B9396272F9168C98 /* Pods-SourdoughIOT.debug.xcconfig */,
 				996F1BE8C20D9335EDBABB75 /* Pods-SourdoughIOT.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -355,13 +354,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C58XVBS8VQ;
+				DEVELOPMENT_TEAM = 8CUW7CTY4T;
 				INFOPLIST_FILE = SourdoughIOT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.walsha61.SourdoughIOT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hello12345;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -374,13 +373,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C58XVBS8VQ;
+				DEVELOPMENT_TEAM = 8CUW7CTY4T;
 				INFOPLIST_FILE = SourdoughIOT/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.walsha61.SourdoughIOT;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hello12345;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
