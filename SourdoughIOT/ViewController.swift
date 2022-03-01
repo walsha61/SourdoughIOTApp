@@ -99,9 +99,11 @@ class ViewController: UIViewController {
                 }
             }
         }
-    @IBAction func Button(_ sender: Any) {
-        registerSubscriptions()
-    }
+    
+    
+    @IBOutlet weak var TempValue:  UILabel!
+    
+  
     func messageReceived(payload: Data) {
         let payloadDictionary = jsonDataToDict(jsonData: payload)
         print("Message received: \(payloadDictionary)")
