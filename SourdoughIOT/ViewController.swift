@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         let configuration = AWSServiceConfiguration(region:.EUWest1, credentialsProvider: credentials)
         // Do any additional setup after loading the view.
         
-        
+    
         
         // Initialising AWS IoT And IoT DataManager
         AWSIoT.register(with: configuration!, forKey: "kAWSIoT")  // Same configuration var as above
@@ -42,6 +42,8 @@ class ViewController: UIViewController {
             
             }
         
+        // Display the temperature value
+        self.TempValue.text = String(0)
 
         
         print("Registered Whoop")
@@ -108,9 +110,15 @@ class ViewController: UIViewController {
   
     func messageReceived(payload: Data) {
         let payloadDictionary = jsonDataToDict(jsonData: payload)
-        print("Message received: \(payloadDictionary)")
+        //print("Message received: \(payloadDictionary)")
         
         // Handle message event here...
+        // Display the temperature value
+        DispatchQueue.main.async {
+            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+            print(payloadDictionary["temperature"]!)
+            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+        }
     }
     
     func registerSubscriptions() {
@@ -119,8 +127,13 @@ class ViewController: UIViewController {
                 print("Message received: \(payloadDictionary)")
                 
                 // Handle message event here...
+                // Display the temperature value
+                DispatchQueue.main.async {
+                    print(payloadDictionary["temperature"]!)
+                    self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+
+                }
             }
-            
             let topicArray = ["esp32/pub" ]
             let dataManager = AWSIoTDataManager(forKey: "kDataManager")
             
@@ -146,8 +159,9 @@ class ViewController: UIViewController {
     }
     
     func publishMessage(message: String!, topic: String!) {
-      let dataManager = AWSIoTDataManager(forKey: "kDataManager")
-      dataManager.publishString(message, onTopic: topic, qoS: .messageDeliveryAttemptedAtLeastOnce) // Set QoS as needed
+        let dataManager = AWSIoTDataManager(forKey: "kDataManager")
+        dataManager.publishString(message, onTopic: topic, qoS: .messageDeliveryAttemptedAtLeastOnce) // Set QoS as needed
+        
     }
 
 

@@ -16,15 +16,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4T-iO-Dr8">
-                                <rect key="frame" x="114" y="240" width="186" height="96"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="103.00000000000001" y="239.99999999999997" width="208.33333333333337" height="107.66666666666666"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="90"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="˚C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MFM-4f-k9q">
-                                <rect key="frame" x="165" y="391" width="84" height="84"/>
+                                <rect key="frame" x="165" y="377.66666666666669" width="84" height="84"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="70"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e79-pv-bMy">
+                                <rect key="frame" x="102.00000000000001" y="41.666666666666664" width="210.33333333333337" height="79.333333333333343"/>
+                                <string key="text">Sourdough 
+Smarter</string>
+                                <fontDescription key="fontDescription" name="CourierNewPSMT" family="Courier New" pointSize="35"/>
+                                <color key="textColor" red="0.18073600059713074" green="0.34479615665788937" blue="0.71775825777202062" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -33,8 +41,10 @@
                             <constraint firstItem="G4T-iO-Dr8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3cj-27-A0P"/>
                             <constraint firstItem="MFM-4f-k9q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FXV-wI-ovu"/>
                             <constraint firstItem="G4T-iO-Dr8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UrK-tN-aRL"/>
-                            <constraint firstItem="MFM-4f-k9q" firstAttribute="top" secondItem="G4T-iO-Dr8" secondAttribute="bottom" constant="55" id="ZXl-p1-wpM"/>
+                            <constraint firstItem="MFM-4f-k9q" firstAttribute="top" secondItem="G4T-iO-Dr8" secondAttribute="bottom" constant="30" id="bwS-mM-p8l"/>
+                            <constraint firstItem="G4T-iO-Dr8" firstAttribute="top" secondItem="e79-pv-bMy" secondAttribute="bottom" constant="119" id="czx-GP-tgH"/>
                             <constraint firstItem="G4T-iO-Dr8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="240" id="mTh-4H-63g"/>
+                            <constraint firstItem="e79-pv-bMy" firstAttribute="centerX" secondItem="G4T-iO-Dr8" secondAttribute="centerX" id="wCu-hj-yax"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -44,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-23.188405797101453" y="24.776785714285712"/>
+            <point key="canvasLocation" x="-23.188405797101453" y="24.456521739130437"/>
         </scene>
     </scenes>
 </document>
