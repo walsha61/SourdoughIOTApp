@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A29553B427DD504C0072EE9C /* RiseMonitorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29553B327DD504C0072EE9C /* RiseMonitorViewController.swift */; };
 		A2F7388227CE1B480053486E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F7388127CE1B480053486E /* AppDelegate.swift */; };
 		A2F7388427CE1B480053486E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F7388327CE1B480053486E /* SceneDelegate.swift */; };
 		A2F7388627CE1B480053486E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F7388527CE1B480053486E /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 /* Begin PBXFileReference section */
 		8E23854D0F7A8770C9CED4E4 /* Pods_SourdoughIOT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SourdoughIOT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		996F1BE8C20D9335EDBABB75 /* Pods-SourdoughIOT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SourdoughIOT.release.xcconfig"; path = "Target Support Files/Pods-SourdoughIOT/Pods-SourdoughIOT.release.xcconfig"; sourceTree = "<group>"; };
+		A29553B327DD504C0072EE9C /* RiseMonitorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RiseMonitorViewController.swift; sourceTree = "<group>"; };
 		A2F7387E27CE1B480053486E /* SourdoughIOT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SourdoughIOT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F7388127CE1B480053486E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2F7388327CE1B480053486E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				A2F7388327CE1B480053486E /* SceneDelegate.swift */,
 				A2F7388527CE1B480053486E /* ViewController.swift */,
 				A2F7388727CE1B480053486E /* Main.storyboard */,
+				A29553B327DD504C0072EE9C /* RiseMonitorViewController.swift */,
 				A2F7388A27CE1B4C0053486E /* Assets.xcassets */,
 				A2F7388C27CE1B4C0053486E /* LaunchScreen.storyboard */,
 				A2F7388F27CE1B4C0053486E /* Info.plist */,
@@ -206,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A29553B427DD504C0072EE9C /* RiseMonitorViewController.swift in Sources */,
 				A2F7388627CE1B480053486E /* ViewController.swift in Sources */,
 				A2F7388227CE1B480053486E /* AppDelegate.swift in Sources */,
 				A2F7388427CE1B480053486E /* SceneDelegate.swift in Sources */,
