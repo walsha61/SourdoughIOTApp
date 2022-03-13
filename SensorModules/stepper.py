@@ -1,81 +1,62 @@
-import utime
+import time
 from machine import Pin
+ 
+# only test for uln2003
+class Stepper:
+    FULL_ROTATION = int(4075.7728395061727 / 8) # http://www.jangeox.be/2013/10/stepper-motor-28byj-48_25.html
 
-class STEPPER:
+    HALF_STEP = [
+        [0, 0, 0, 1],
+        [0, 0, 1, 1],
+        [0, 0, 1, 0],
+        [0, 1, 1, 0],
+        [0, 1, 0, 0],
+        [1, 1, 0, 0],
+        [1, 0, 0, 0],
+        [1, 0, 0, 1],
+    ]
 
-    def __init__(self, device_config):
-        self._In1 = Pin(device_config["In1"], Pin.OUT)
-        self._In2 = Pin(device_config["In2"], Pin.OUT)
-        self._In3 = Pin(device_config["In3"], Pin.OUT)
-        self._In4 = Pin(device_config["In4"], Pin.OUT)
-        self._number_of_steps = device_config["number_of_steps"] + 1
-        self._max_speed = 60 * 1000 * 1000 / self._number_of_steps / device_config["max_speed"]
-        self._step_number = 0
-        self._last_step_time = 0
-        self.set_speed(device_config["max_speed"]/2)
-
-    def set_speed(self, speed):
-        self._step_delay = 60 * 1000 * 1000 / self._number_of_steps / speed
-        if self._step_delay < self._max_speed:
-            self._step_delay = self._max_speed
-
-    def step_motor(self, step):
-        if step == 0:  #1010
-            self._In1.value(1)
-            self._In2.value(0)
-            self._In3.value(1)
-            self._In4.value(0)
-        elif step == 1: #0110
-            self._In1.value(0)
-            self._In2.value(1)
-            self._In3.value(1)
-            self._In4.value(0)
-        elif step == 2: #0101
-            self._In1.value(0)
-            self._In2.value(1)
-            self._In3.value(0)
-            self._In4.value(1)
-        elif step == 3: #1001
-            self._In1.value(1)
-            self._In2.value(0)
-            self._In3.value(0)
-            self._In4.value(1)
-
-    def release(self):
-        self._In1.value(0)
-        self._In2.value(0)
-        self._In3.value(0)
-        self._In4.value(0)
-
-    def step(self, steps_to_move, speed=None, hold=True):
-        if speed is not None:
-            self.set_speed(speed)
-
-        steps_left = abs(steps_to_move)
-        
-        if steps_to_move > 0:
-            direction = 1
+    FULL_STEP = [
+        [1, 0, 1, 0],
+        [0, 1, 1, 0],
+        [0, 1, 0, 1],
+        [1, 0, 0, 1]
+    ]
+    def __init__(self, config):     
+        if config["mode"] =='FULL_STEP':
+            self.mode = self.FULL_STEP
         else:
-            direction = 0
-
-        while steps_left > 0:
-            now = utime.ticks_us()
-            if now - self._last_step_time >= self._step_delay:
-                self._last_step_time = now
-                if direction == 1:
-                    self._step_number += 1
-
-                if direction == 0:
-                    if self._step_number == 0:
-                        self._step_number == steps_left
-
-                    self._step_number -= 1
-
-                self.step_motor(self._step_number % 4)
-                steps_left -= 1
-
-        if self._step_number == steps_left:
-            self._step_number = 0
-
-        if steps_left == 0 and not hold:
-            self.release()
+            self.mode = self.HALF_STEP
+            
+        self.pin1 = Pin(config["In1"], Pin.OUT)
+        self.pin2 = Pin(config["In2"], Pin.OUT)
+        self.pin3 = Pin(config["In3"], Pin.OUT)
+        self.pin4 = Pin(config["In4"], Pin.OUT)
+        self.delay = config["delay"]  # Recommend 10+ for FULL_STEP, 1 is OK for HALF_STEP
+        
+        # Initialize all to 0
+        self.reset()
+        
+    def step(self, count, direction=1):
+        """Rotate count steps. direction = -1 means backwards"""
+        if count<0:
+            direction = -1
+            count = -count
+        for x in range(count):
+            for bit in self.mode[::direction]:
+                self.pin1(bit[0])
+                self.pin2(bit[1])
+                self.pin3(bit[2])
+                self.pin4(bit[3])
+                time.sleep_ms(self.delay)
+        self.reset()
+        
+    def angle(self, r, direction=1):
+        self.step(int(self.FULL_ROTATION * r / 360), direction)
+        
+    def reset(self):
+        # Reset to 0, no holding, these are geared, you can't move them
+        self.pin1(0) 
+        self.pin2(0) 
+        self.pin3(0) 
+        self.pin4(0)
