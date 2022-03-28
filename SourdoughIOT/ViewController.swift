@@ -43,7 +43,7 @@ class ViewController: UIViewController {
             }
         
         // Display the temperature value
-        self.TempValue.text = String(0)
+        //self.TempValue.text = String(0)
 
         
         print("Registered Whoop")
@@ -104,8 +104,15 @@ class ViewController: UIViewController {
             }
         }
     
+    @IBOutlet weak var TempValue: UILabel!
+    @IBOutlet weak var HumidityValue: UILabel!
+    @IBOutlet weak var RiseValue: UILabel!
     
-    @IBOutlet weak var TempValue:  UILabel!
+    
+    @IBAction func DispenseButton(_ sender: Any) {
+        publishMessage(message: "dispense", topic: "esp32/pub")
+        
+    }
     
   
     func messageReceived(payload: Data) {
@@ -117,7 +124,9 @@ class ViewController: UIViewController {
         DispatchQueue.main.async {
             self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
             print(payloadDictionary["temperature"]!)
-            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0) °C"
+            self.HumidityValue.text = "\(payloadDictionary["humidity"] ?? 0) g.kg-1"
+            self.RiseValue.text = "\(payloadDictionary["rise"] ?? 0) cm"
         }
     }
     
@@ -129,8 +138,10 @@ class ViewController: UIViewController {
                 // Handle message event here...
                 // Display the temperature value
                 DispatchQueue.main.async {
-                    print(payloadDictionary["temperature"]!)
-                    self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+//                    print(payloadDictionary["temperature"]!)
+                    self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0) °C"
+                    self.HumidityValue.text = "\(payloadDictionary["humidity"] ?? 0) g.kg-1"
+                    self.RiseValue.text = "\(payloadDictionary["rise"] ?? 0) cm"
 
                 }
             }
