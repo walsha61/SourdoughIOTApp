@@ -2,7 +2,7 @@ import machine, time
 from machine import Pin
 
 
-class HCSR04:
+class Ultrasonic:
     """
     Driver to use the untrasonic sensor HC-SR04.
     The sensor range is between 2cm and 4m.
