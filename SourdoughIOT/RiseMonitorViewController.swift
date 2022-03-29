@@ -10,7 +10,26 @@ import UIKit
 import Charts
 import TinyConstraints
 
+//
+//var dictJson:[String:Any] = [:]
+//init() {
+//    self.dictJson = Dictionary<String,Any>()
+//}
+//
+//required init?(coder: NSCoder) {
+//    fatalError("init(coder:) has not been implemented")
+//}
+
 class RiseMonitorViewController: UIViewController, ChartViewDelegate {
+    var dictJson:[String:Any] = [:]
+//    init() {
+//        self.dictJson = Dictionary<String,Any>()
+//    }
+
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+    
 
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
@@ -35,14 +54,23 @@ class RiseMonitorViewController: UIViewController, ChartViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
+        
         view.addSubview(lineChartView)
         lineChartView.centerInSuperview()
         lineChartView.width(to: view)
         lineChartView.heightToWidth(of: view)
-    
+        
+        //var dictJson:[String:String] = [:]
+        var isDictEmpty = dictJson.count == 0
+        print("isDictEmpty: \(isDictEmpty)")
         setData()
+
+//        if (isDictEmpty == false) {
+//            setData()
+//        }
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
@@ -71,9 +99,9 @@ class RiseMonitorViewController: UIViewController, ChartViewDelegate {
         ChartDataEntry(x: 1.0, y: 15.0),
         ChartDataEntry(x: 2.0, y: 20.0),
         ChartDataEntry(x: 3.0, y: 25.0),
-        ChartDataEntry(x: 4.0, y: 30.0)
+        //ChartDataEntry(x: 1.0, y: dictJson["temperature"] as? Double ?? 0)
     ]
-
+    
     /*
     // MARK: - Navigation
 

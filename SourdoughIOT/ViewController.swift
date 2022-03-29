@@ -129,13 +129,21 @@ class ViewController: UIViewController {
                 let payloadDictionary = jsonDataToDict(jsonData: payload)
                 print("Message received: \(payloadDictionary)")
                 
-                // Handle message event here...
                 // Display the temperature value
                 DispatchQueue.main.async {
                     print(payloadDictionary["temperature"]!)
                     self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+                    
+                    // Send data to Rise Monitor VC
+                    // Currently sending temp but we want to change this to the rise data from ultrasonic sensor
+                    let riseData = payloadDictionary["temperature"]
+                    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "RiseMonitorViewController") as! RiseMonitorViewController
+                    viewController.dictJson = payloadDictionary
+                    self.navigationController?.pushViewController(viewController, animated: true)
 
                 }
+                
+                
             }
             let topicArray = ["esp32/pub" ]
             let dataManager = AWSIoTDataManager(forKey: "kDataManager")
@@ -166,6 +174,16 @@ class ViewController: UIViewController {
         dataManager.publishString(message, onTopic: topic, qoS: .messageDeliveryAttemptedAtLeastOnce) // Set QoS as needed
         
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "segueGraph") {
+//            //Checking ID as multiple segues might be attached to the view
+//            var graphVC = segue!.destinationViewController as RiseMonitorViewController;
+//            graphVC.toPass =
+//        }
+//    }
+    
+    
 
 
 }
