@@ -1,0 +1,34 @@
+PODS:
+  - AWSCore (2.27.1)
+  - AWSIoT (2.27.1):
+    - AWSCore (= 2.27.1)
+  - Charts (4.0.2):
+    - Charts/Core (= 4.0.2)
+  - Charts/Core (4.0.2):
+    - SwiftAlgorithms (~> 1.0)
+  - SwiftAlgorithms (1.0.0)
+  - TinyConstraints (4.0.2)
+
+DEPENDENCIES:
+  - AWSIoT
+  - Charts
+  - TinyConstraints
+
+SPEC REPOS:
+  trunk:
+    - AWSCore
+    - AWSIoT
+    - Charts
+    - SwiftAlgorithms
+    - TinyConstraints
+
+SPEC CHECKSUMS:
+  AWSCore: f859f6955a8e52dcb3e79fac95fef058639d1049
+  AWSIoT: 983f5c1e770e1553a2913528857305b60bb3cac4
+  Charts: cfa4e911e6dc289582c2fe011a0e87c03d96727f
+  SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
+  TinyConstraints: 7b7ccc0c485bb3bb47082138ff28bc33cd49897f
+
+PODFILE CHECKSUM: 9cf0d95be6022d2e81871eee12911f375a2ea7a6
+
+COCOAPODS: 1.11.2

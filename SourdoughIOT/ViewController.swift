@@ -7,8 +7,18 @@
 
 import UIKit
 import AWSIoT
+import Charts
+import TinyConstraints
 
 class ViewController: UIViewController {
+    
+    var x = 2.0
+    
+    
+    var yValues: [ChartDataEntry] = [
+        ChartDataEntry(x: 0.0, y: 10.0),
+        ChartDataEntry(x: 1.0, y: 15.0),
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,6 +125,7 @@ class ViewController: UIViewController {
     }
     
   
+
     func messageReceived(payload: Data) {
         let payloadDictionary = jsonDataToDict(jsonData: payload)
         //print("Message received: \(payloadDictionary)")
@@ -129,21 +140,50 @@ class ViewController: UIViewController {
             self.RiseValue.text = "\(payloadDictionary["rise"] ?? 0) cm"
         }
     }
+
+//    func messageReceived(payload: Data) {
+//        let payloadDictionary = jsonDataToDict(jsonData: payload)
+//        //print("Message received: \(payloadDictionary)")
+//        
+//        // Handle message event here...
+//        // Display the temperature value
+//        DispatchQueue.main.async {
+//            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+//            print(payloadDictionary["temperature"]!)
+//            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+//            self.yValues.append(ChartDataEntry(x: self.x, y: (payloadDictionary["rise"]) as! Double))
+//            self.x = self.x + 1
+//        }
+//    }
     
     func registerSubscriptions() {
             func messageReceived(payload: Data) {
                 let payloadDictionary = jsonDataToDict(jsonData: payload)
                 print("Message received: \(payloadDictionary)")
                 
-                // Handle message event here...
                 // Display the temperature value
                 DispatchQueue.main.async {
 //                    print(payloadDictionary["temperature"]!)
                     self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0) °C"
                     self.HumidityValue.text = "\(payloadDictionary["humidity"] ?? 0) g.kg-1"
                     self.RiseValue.text = "\(payloadDictionary["rise"] ?? 0) cm"
+                    print(payloadDictionary["temperature"]!)
+                    self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+                    self.yValues.append(ChartDataEntry(x: self.x, y: (payloadDictionary["rise"]) as! Double))
+                    self.x = self.x + 1
+                    print("yvalues are", self.yValues)
+                    NotificationCenter.default.post(name: Notification.Name("NewFunctionName"), object: self.yValues)
+                    
+                    // Send data to Rise Monitor VC
+                    // Currently sending temp but we want to change this to the rise data from ultrasonic sensor
+//                    let riseData = payloadDictionary["temperature"]
+//                    let viewController = self.storyboard?.instantiateViewController(withIdentifier: "RiseMonitorViewController") as! RiseMonitorViewController
+//                    viewController.dictJson = payloadDictionary
+//                    self.navigationController?.pushViewController(viewController, animated: true)
 
                 }
+                
+                
             }
             let topicArray = ["esp32/pub" ]
             let dataManager = AWSIoTDataManager(forKey: "kDataManager")
@@ -174,6 +214,16 @@ class ViewController: UIViewController {
         dataManager.publishString(message, onTopic: topic, qoS: .messageDeliveryAttemptedAtLeastOnce) // Set QoS as needed
         
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier == "segueGraph") {
+//            //Checking ID as multiple segues might be attached to the view
+//            var graphVC = segue!.destinationViewController as RiseMonitorViewController;
+//            graphVC.toPass =
+//        }
+//    }
+    
+    
 
 
 }
