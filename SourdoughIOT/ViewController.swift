@@ -12,6 +12,13 @@ import TinyConstraints
 
 class ViewController: UIViewController {
     
+    var x = 2.0
+    
+    
+    var yValues: [ChartDataEntry] = [
+        ChartDataEntry(x: 0.0, y: 10.0),
+        ChartDataEntry(x: 1.0, y: 15.0),
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -111,18 +118,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var TempValue:  UILabel!
     
   
-    func messageReceived(payload: Data) {
-        let payloadDictionary = jsonDataToDict(jsonData: payload)
-        //print("Message received: \(payloadDictionary)")
-        
-        // Handle message event here...
-        // Display the temperature value
-        DispatchQueue.main.async {
-            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
-            print(payloadDictionary["temperature"]!)
-            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
-        }
-    }
+//    func messageReceived(payload: Data) {
+//        let payloadDictionary = jsonDataToDict(jsonData: payload)
+//        //print("Message received: \(payloadDictionary)")
+//        
+//        // Handle message event here...
+//        // Display the temperature value
+//        DispatchQueue.main.async {
+//            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+//            print(payloadDictionary["temperature"]!)
+//            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+//            self.yValues.append(ChartDataEntry(x: self.x, y: (payloadDictionary["rise"]) as! Double))
+//            self.x = self.x + 1
+//        }
+//    }
     
     func registerSubscriptions() {
             func messageReceived(payload: Data) {
@@ -134,6 +143,10 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     print(payloadDictionary["temperature"]!)
                     self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+                    self.yValues.append(ChartDataEntry(x: self.x, y: (payloadDictionary["rise"]) as! Double))
+                    self.x = self.x + 1
+                    print("yvalues are", self.yValues)
+                    NotificationCenter.default.post(name: Notification.Name("NewFunctionName"), object: self.yValues)
 
                 }
             }

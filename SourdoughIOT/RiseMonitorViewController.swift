@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Charts
 import TinyConstraints
+import Charts
 
 class RiseMonitorViewController: UIViewController, ChartViewDelegate {
 
@@ -41,16 +41,26 @@ class RiseMonitorViewController: UIViewController, ChartViewDelegate {
         lineChartView.centerInSuperview()
         lineChartView.width(to: view)
         lineChartView.heightToWidth(of: view)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(setData), name: Notification.Name("NewFunctionName"), object: nil)
     
-        setData()
+        //setData()
     }
     
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         print(entry)
     }
     
-    func setData() {
-        let set1 = LineChartDataSet(entries: yValues, label: "Rise")
+    @objc func setData(notification: NSNotification) {
+        
+        guard let yVal = notification.object as? [ChartDataEntry]  else {
+                    return
+                }
+//        var pageController  = ViewController()
+//        var yVal = pageController.yValues
+        print("Setting yvalues", yVal)
+        
+        let set1 = LineChartDataSet(entries: yVal, label: "Rise")
         
         // Customise the set1 line
         set1.mode = .cubicBezier
@@ -66,13 +76,6 @@ class RiseMonitorViewController: UIViewController, ChartViewDelegate {
     }
     
     // Need to replace these with incoming JSON data (segue?)
-    let yValues: [ChartDataEntry] = [
-        ChartDataEntry(x: 0.0, y: 10.0),
-        ChartDataEntry(x: 1.0, y: 15.0),
-        ChartDataEntry(x: 2.0, y: 20.0),
-        ChartDataEntry(x: 3.0, y: 25.0),
-        ChartDataEntry(x: 4.0, y: 30.0)
-    ]
 
     /*
     // MARK: - Navigation
