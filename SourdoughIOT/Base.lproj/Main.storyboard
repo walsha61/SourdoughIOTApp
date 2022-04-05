@@ -25,7 +25,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="885-kJ-HuH">
-                                <rect key="frame" x="97.5" y="546" width="180" height="54"/>
+                                <rect key="frame" x="97.5" y="546" width="180" height="57"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="JAY-pF-8ts"/>
@@ -40,7 +40,7 @@
                                     <attributedString key="attributedTitle">
                                         <fragment content="Dispense">
                                             <attributes>
-                                                <font key="NSFont" size="36" name=".SFNS-Regular"/>
+                                                <font key="NSFont" metaFont="system" size="36"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
@@ -161,12 +161,35 @@
                     <view key="view" contentMode="scaleToFill" id="KM9-Fr-9f6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monitor the rise of your sourdough!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGP-gP-3L5">
+                                <rect key="frame" x="53" y="63" width="269" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your sourdough is ready to be fed!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbn-Dg-XCI">
+                                <rect key="frame" x="56.5" y="561" width="262" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="TMX-yE-npn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vbn-Dg-XCI" firstAttribute="centerX" secondItem="KM9-Fr-9f6" secondAttribute="centerX" id="NOO-jc-Zq2"/>
+                            <constraint firstItem="TMX-yE-npn" firstAttribute="bottom" secondItem="vbn-Dg-XCI" secondAttribute="bottom" constant="36" id="Ywx-5L-jHh"/>
+                            <constraint firstItem="dGP-gP-3L5" firstAttribute="centerX" secondItem="KM9-Fr-9f6" secondAttribute="centerX" id="xdD-vQ-FXU"/>
+                            <constraint firstItem="dGP-gP-3L5" firstAttribute="top" secondItem="TMX-yE-npn" secondAttribute="top" constant="19" id="zRE-Ea-8Is"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="K66-Cn-B46">
                         <barButtonItem key="backBarButtonItem" title=" " id="2ob-N9-7mS"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="ReadyLabel" destination="vbn-Dg-XCI" id="1cE-kg-pgw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="266-AN-O4D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,12 +12,11 @@ import TinyConstraints
 
 class ViewController: UIViewController {
     
-    var x = 2.0
+    var x = 1.0
     
     
     var yValues: [ChartDataEntry] = [
-        ChartDataEntry(x: 0.0, y: 10.0),
-        ChartDataEntry(x: 1.0, y: 15.0),
+        ChartDataEntry(x: 0.0, y: 0.0),
     ]
 
     override func viewDidLoad() {
@@ -126,20 +125,20 @@ class ViewController: UIViewController {
     
   
 
-    func messageReceived(payload: Data) {
-        let payloadDictionary = jsonDataToDict(jsonData: payload)
-        //print("Message received: \(payloadDictionary)")
-        
-        // Handle message event here...
-        // Display the temperature value
-        DispatchQueue.main.async {
-            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
-            print(payloadDictionary["temperature"]!)
-            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0) °C"
-            self.HumidityValue.text = "\(payloadDictionary["humidity"] ?? 0) g.kg-1"
-            self.RiseValue.text = "\(payloadDictionary["rise"] ?? 0) cm"
-        }
-    }
+//    func messageReceived(payload: Data) {
+//        let payloadDictionary = jsonDataToDict(jsonData: payload)
+//        //print("Message received: \(payloadDictionary)")
+//        
+//        // Handle message event here...
+//        // Display the temperature value
+//        DispatchQueue.main.async {
+//            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0)"
+//            print(payloadDictionary["temperature"]!)
+//            self.TempValue.text = "\(payloadDictionary["temperature"] ?? 0) °C"
+//            self.HumidityValue.text = "\(payloadDictionary["humidity"] ?? 0) g.kg-1"
+//            self.RiseValue.text = "\(payloadDictionary["rise"] ?? 0) cm"
+//        }
+//    }
 
 //    func messageReceived(payload: Data) {
 //        let payloadDictionary = jsonDataToDict(jsonData: payload)

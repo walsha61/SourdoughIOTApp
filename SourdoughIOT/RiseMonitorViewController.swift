@@ -30,7 +30,8 @@ class RiseMonitorViewController: UIViewController, ChartViewDelegate {
 //        fatalError("init(coder:) has not been implemented")
 //    }
     
-
+    @IBOutlet weak var ReadyLabel: UILabel!
+    
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         
@@ -65,7 +66,7 @@ class RiseMonitorViewController: UIViewController, ChartViewDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(setData), name: Notification.Name("NewFunctionName"), object: nil)
     
-        //setData()
+        setEmptyData()
         //var dictJson:[String:String] = [:]
 //        var isDictEmpty = dictJson.count == 0
 //        print("isDictEmpty: \(isDictEmpty)")
@@ -80,6 +81,32 @@ class RiseMonitorViewController: UIViewController, ChartViewDelegate {
         print(entry)
     }
     
+    @objc func setEmptyData() {
+        
+        var yValues: [ChartDataEntry] = [
+            ChartDataEntry(x: 0.0, y: 0.0),
+        ]
+
+//        var pageController  = ViewController()
+//        var yVal = pageController.yValues
+//        print("Setting yvalues", yVal)
+        
+        let set1 = LineChartDataSet(entries: yValues, label: "Rise")
+        
+        // Customise the set1 line
+        set1.mode = .cubicBezier
+        set1.drawCirclesEnabled = false
+        set1.lineWidth = 2
+        set1.setColor(.blue)
+        set1.fillAlpha = 0.8
+
+        
+        let data = LineChartData(dataSet: set1)
+        data.setDrawValues(false)
+        lineChartView.data = data
+    }
+    
+    
     @objc func setData(notification: NSNotification) {
         
         guard let yVal = notification.object as? [ChartDataEntry]  else {
@@ -88,6 +115,14 @@ class RiseMonitorViewController: UIViewController, ChartViewDelegate {
 //        var pageController  = ViewController()
 //        var yVal = pageController.yValues
         print("Setting yvalues", yVal)
+        
+        let size = yVal.count
+        if(yVal.count > 6){
+            if (((yVal[size - 1].y) - (yVal[size-4].y)) < 0.5){
+                //ready to display
+                ReadyLabel.alpha = 1
+            }
+        }
         
         let set1 = LineChartDataSet(entries: yVal, label: "Rise")
         
